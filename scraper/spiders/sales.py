@@ -37,13 +37,16 @@ class SalesSpider(scrapy.Spider):
     def parse_orders(self, response):
         '''getting orders data available from API'''
         orders = response.json().get('data')
+        yield orders
         # for order in orders:
-        #     order_id = order['id']
-        #     order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
-        #     yield scrapy.Request(url=order_url, callback=self.parse_order_details)
-        order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
-        self.sale['id'] = 2182212
-        yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+        #     self.sale['id'] = order['id']
+
+        #     #     order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
+        #     #     yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+        #     yield self.sale
+
+        # order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
+        # yield scrapy.Request(url=order_url, callback=self.parse_order_details)
 
     def parse_order_details(self, response):
         rows = response.css('div.mp-table table tbody tr')
