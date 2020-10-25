@@ -31,22 +31,23 @@ class SalesSpider(scrapy.Spider):
         if authentication_failed(response):
             self.logger.error("Login failed")
             return
-        url = config('ORDERS_API_URL')
+        url = 'http://sell.thenooks.ca/index.php?p=order'
         yield scrapy.Request(url=url, callback=self.parse_orders)
 
     def parse_orders(self, response):
-        '''getting orders data available from API'''
-        orders = response.json().get('data')
-        yield orders
-        # for order in orders:
-        #     self.sale['id'] = order['id']
+        '''getting orders data available from orders listing page'''
+        orders = response.css('div.mp-table tbody tr')
+        print(response.text)
+        for order in orders:
+            print(order)
+            self.sale['id'] = order.css('td.sorting_1::text').get()
+            self.sale['date'] = order.css('td:nth-child(3)::text').get()
 
-        #     #     order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
-        #     #     yield scrapy.Request(url=order_url, callback=self.parse_order_details)
-        #     yield self.sale
+            #     order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
+            #     yield scrapy.Request(url=order_url, callback=self.parse_order_details)
 
-        # order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
-        # yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+        order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
+        yield scrapy.Request(url=order_url, callback=self.parse_order_details)
 
     def parse_order_details(self, response):
         rows = response.css('div.mp-table table tbody tr')
