@@ -1,6 +1,6 @@
 import scrapy
 from decouple import config
-from scraper.items import Sale
+from scraper.items import SaleItem
 
 
 def authentication_failed(response):
@@ -8,9 +8,14 @@ def authentication_failed(response):
 
 
 class SalesSpider(scrapy.Spider):
+    """Login to nooks, get the order list JSON, based on order.id go to details page
+    and parse the further details from there now called sale details
+
+    Yields:
+        dict: Sale Item with details
+    """
     name = 'sales'
     start_urls = ['http://sell.thenooks.ca/index.php?p=login']
-    sale = Sale()
 
     def parse(self, response):
         """Logins and grabs the session to get the orders data
@@ -31,30 +36,35 @@ class SalesSpider(scrapy.Spider):
         if authentication_failed(response):
             self.logger.error("Login failed")
             return
-        url = 'http://sell.thenooks.ca/index.php?p=order'
+        url = config('ORDERS_API_URL')
         yield scrapy.Request(url=url, callback=self.parse_orders)
 
     def parse_orders(self, response):
         '''getting orders data available from orders listing page'''
-        orders = response.css('div.mp-table tbody tr')
-        print(response.text)
+
+        orders = response.json().get('data')
+        print(orders)
         for order in orders:
-            print(order)
-            self.sale['id'] = order.css('td.sorting_1::text').get()
-            self.sale['date'] = order.css('td:nth-child(3)::text').get()
+            sale = SaleItem()
+            sale['id'] = order['id']
+            # slice because order['date_add'] is yyyy-mm-dd hh-mm-ss format
+            sale['date'] = order['date_add'][:10]
 
-            #     order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
-            #     yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+            order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
+            yield scrapy.Request(url=order_url, callback=self.parse_order_details, meta={'item': sale})
 
-        order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
-        yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+        # order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
+        # yield scrapy.Request(url=order_url, callback=self.parse_order_details)
 
     def parse_order_details(self, response):
+        """ Parsing sale details after getting order id"""
+
+        sale = response.meta['item']
         rows = response.css('div.mp-table table tbody tr')
         for row in rows:
-            self.sale['product'] = row.css('td:nth-child(2) a::text').get()
-            self.sale['sku'] = row.css('td:nth-child(3)::text').get()
-            self.sale['quantity'] = row.css('td:nth-child(4)::text').get()
-            self.sale['price'] = row.css(
+            sale['product'] = row.css('td:nth-child(2) a::text').get()
+            sale['sku'] = row.css('td:nth-child(3)::text').get()
+            sale['quantity'] = row.css('td:nth-child(4)::text').get()
+            sale['price'] = row.css(
                 'td:nth-child(5) span.price::text').get()
-            yield self.sale
+            yield sale

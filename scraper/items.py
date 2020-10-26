@@ -6,7 +6,7 @@
 import scrapy
 
 
-class Sale(scrapy.Item):
+class SaleItem(scrapy.Item):
     id = scrapy.Field()
     date = scrapy.Field()
     product = scrapy.Field()
