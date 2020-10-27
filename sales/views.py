@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User, Group
+from .models import Sale
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSeralizers
+from .serializers import SaleSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class SaleViewSet(viewsets.ModelViewSet):
     """API endpoint that allows users to be edited
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    queryset = Sale.objects.all().order_by('-date')
+    serializer_class = SaleSerializer
 
 
 def test(request):
