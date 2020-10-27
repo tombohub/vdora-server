@@ -46,7 +46,7 @@ class SalesSpider(scrapy.Spider):
         print(orders)
         for order in orders:
             sale = SaleItem()
-            sale['id'] = order['id']
+            sale['sale_id'] = order['id']
             # slice because order['date_add'] is yyyy-mm-dd hh-mm-ss format
             sale['date'] = order['date_add'][:10]
 

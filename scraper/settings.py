@@ -7,6 +7,11 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+import sys
+import django
+
+
 BOT_NAME = 'scraper'
 
 SPIDER_MODULES = ['scraper.spiders']
@@ -62,9 +67,9 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'scraper.pipelines.ScraperPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'scraper.pipelines.SaleDatabasePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +93,10 @@ DOWNLOAD_DELAY = 1
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 URLLENGTH_LIMIT = 5000
+
+
+# Django configuration
+sys.path.append(os.path.join(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'server.settings'
+django.setup()

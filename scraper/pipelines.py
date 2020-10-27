@@ -6,8 +6,23 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
+from sales.models import Sale
 
 
-class ScraperPipeline:
+class SaleDatabasePipeline:
     def process_item(self, item, spider):
-        return item
+        if Sale.objects.filter(sale_id=item['sale_id']).exists():
+            print('Sale already exists in database')
+            return item
+        else:
+            sale = Sale()
+            sale.sale_id = item['sale_id']
+            sale.date = item['date']
+            sale.sku = item['sku']
+            sale.product = item['product']
+            sale.quantity = item['quantity']
+            sale.price = item['price']
+
+            sale.save()
+
+            return item

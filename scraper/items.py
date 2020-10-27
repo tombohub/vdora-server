@@ -7,9 +7,9 @@ import scrapy
 
 
 class SaleItem(scrapy.Item):
-    id = scrapy.Field()
     date = scrapy.Field()
-    product = scrapy.Field()
+    sale_id = scrapy.Field()
     sku = scrapy.Field()
+    product = scrapy.Field()
     quantity = scrapy.Field()
     price = scrapy.Field()

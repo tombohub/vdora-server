@@ -4,6 +4,6 @@
     "\\scraper",
     "\\scraper\\spiders"
   ],
-  "SelectedNode": "\\play.py",
+  "SelectedNode": "\\scraper\\pipelines.py",
   "PreviewInSolutionExplorer": false
 }
