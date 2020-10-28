@@ -1,6 +1,8 @@
 import scrapy
 from decouple import config
 from scraper.items import SaleItem
+from sales.models import Sale
+from django.db.models import Max
 
 
 def authentication_failed(response):
@@ -43,18 +45,22 @@ class SalesSpider(scrapy.Spider):
         '''getting orders data available from orders listing page'''
 
         orders = response.json().get('data')
-        print(orders)
+
+        # we are gonna scrape sale details only if it is later than
+        # last sale_id in database
+        last_sale_id = Sale.objects.all().aggregate(
+            Max('sale_id'))['sale_id__max']
+
         for order in orders:
-            sale = SaleItem()
-            sale['sale_id'] = order['id']
-            # slice because order['date_add'] is yyyy-mm-dd hh-mm-ss format
-            sale['date'] = order['date_add'][:10]
+            if int(order['id']) > last_sale_id:
+                sale = SaleItem()
+                sale['sale_id'] = order['id']
 
-            order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
-            yield scrapy.Request(url=order_url, callback=self.parse_order_details, meta={'item': sale})
+                # slice because order['date_add'] is yyyy-mm-dd hh-mm-ss format
+                sale['date'] = order['date_add'][:10]
 
-        # order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid=2182212&status=fulfilled'
-        # yield scrapy.Request(url=order_url, callback=self.parse_order_details)
+                order_url = f'http://sell.thenooks.ca/index.php?p=order_desc&oid={order["id"]}&status=fulfilled'
+                yield scrapy.Request(url=order_url, callback=self.parse_order_details, meta={'item': sale})
 
     def parse_order_details(self, response):
         """ Parsing sale details after getting order id"""
