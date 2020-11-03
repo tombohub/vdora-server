@@ -8,11 +8,7 @@ from .serializers import SaleSerializer
 
 
 class SaleViewSet(viewsets.ModelViewSet):
-    """API endpoint that allows users to be edited
+    """API endpoint that allows sales to be edited
     """
     queryset = Sale.objects.all().order_by('-date')
     serializer_class = SaleSerializer
-
-
-def test(request):
-    return HttpResponse('ejejeje')
