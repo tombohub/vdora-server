@@ -8,4 +8,5 @@ router.register(r'sales', views.SaleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('sales/reports/monthly', views.monthly_sales),
 ]

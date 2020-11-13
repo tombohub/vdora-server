@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.models import User, Group
-from .models import Sale
-from rest_framework import viewsets, filters
-from rest_framework import permissions
+from rest_framework import viewsets, filters, permissions
 from rest_framework.authentication import BasicAuthentication
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from .serializers import SaleSerializer
+from .models import Sale
 
 
 class SaleViewSet(viewsets.ModelViewSet):
@@ -15,3 +14,10 @@ class SaleViewSet(viewsets.ModelViewSet):
     serializer_class = SaleSerializer
 
     # permission_classes = [permissions.IsAuthenticated]
+
+
+@api_view()
+def monthly_sales(request):
+    sales = Sale.objects.all()
+    serializer = SaleSerializer(sales, many=True, context={'request': request})
+    return Response(serializer.data)
