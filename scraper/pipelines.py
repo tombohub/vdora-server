@@ -22,6 +22,7 @@ class SaleDatabasePipeline:
             sale.product = item['product']
             sale.quantity = item['quantity']
             sale.price = item['price']
+            sale.channel = 'Nooks'
 
             sale.save()
 
