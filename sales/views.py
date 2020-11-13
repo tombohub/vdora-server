@@ -1,3 +1,5 @@
+from django.db.models import Sum
+
 from rest_framework import viewsets, filters, permissions
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.decorators import api_view
@@ -18,6 +20,8 @@ class SaleViewSet(viewsets.ModelViewSet):
 
 @api_view()
 def monthly_sales(request):
-    sales = Sale.objects.all()
-    serializer = SaleSerializer(sales, many=True, context={'request': request})
-    return Response(serializer.data)
+    monthly_sales = Sale.objects.values(
+        'date__month').annotate(Sum('price'))
+    serializer = SaleSerializer(
+        monthly_sales, many=True, context={'request': request})
+    return Response(monthly_sales)
