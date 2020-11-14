@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .serializers import SaleSerializer
-from .models import Sale
+from .models import Sale, NooksPayoutSchedule
 
 
 class SaleViewSet(viewsets.ModelViewSet):
@@ -22,6 +22,9 @@ class SaleViewSet(viewsets.ModelViewSet):
 def monthly_sales(request):
     monthly_sales = Sale.objects.values(
         'date__month').annotate(Sum('price'))
-    serializer = SaleSerializer(
-        monthly_sales, many=True, context={'request': request})
     return Response(monthly_sales)
+
+
+@api_view()
+def nooks_payouts(request):
+    pass

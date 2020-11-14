@@ -1,3 +1,7 @@
+"""Script for importing sales into Sale model from csv
+    """
+
+
 import csv
 import os
 import sys
