@@ -1,11 +1,12 @@
 from django.db import models
-from django.db.models.fields import DateField
+from django.db.models.fields import BooleanField, DateField
 
 
 class NooksPayoutSchedule(models.Model):
     start_date = DateField()
     end_date = DateField()
     payout_date = DateField()
+    is_picked = BooleanField()
 
 
 class Sale(models.Model):
