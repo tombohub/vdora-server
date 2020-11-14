@@ -17,7 +17,7 @@ class Sale(models.Model):
     price = models.FloatField()
     channel = models.CharField(max_length=100)
     nooks_payout_schedule = models.ForeignKey(
-        NooksPayoutSchedule, on_delete=models.RESTRICT)
+        NooksPayoutSchedule, on_delete=models.RESTRICT, blank=True, null=True)
 
     def __str__(self):
         return self.product

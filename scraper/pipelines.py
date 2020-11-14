@@ -6,7 +6,7 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from sales.models import Sale
+from sales.models import Sale, NooksPayoutSchedule
 
 
 class SaleDatabasePipeline:
@@ -23,6 +23,10 @@ class SaleDatabasePipeline:
             sale.quantity = item['quantity']
             sale.price = item['price']
             sale.channel = 'Nooks'
+
+            nooks_payout_schedule = NooksPayoutSchedule.objects.filter(
+                start_date__lte=sale.date, end_date__gte=sale.date)
+            sale.nooks_payout_schedule = nooks_payout_schedule
 
             sale.save()
 
