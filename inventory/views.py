@@ -14,6 +14,12 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 @api_view()
 def inventory_stocks(request):
+    """
+    Current Inventory stock for each product. Divided by each warehouse location
+    """
     stocks = pivot(Transaction, 'product__name',
                    'location__name', 'quantity', default=0)
+    for stock in stocks:
+        stock['Total'] = stock['Nooks'] + stock['In-house']
+
     return Response(stocks)

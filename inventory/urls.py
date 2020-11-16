@@ -11,5 +11,5 @@ router.register('products', views.ProductViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('reports/stocks', views.inventory_stocks)
+    path('reports/stocks/', views.inventory_stocks)
 ]
