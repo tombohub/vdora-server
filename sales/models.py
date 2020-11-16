@@ -8,6 +8,9 @@ class NooksPayoutSchedule(models.Model):
     payout_date = DateField()
     is_picked = BooleanField()
 
+    def __str__(self) -> str:
+        return self.payout_date
+
 
 class Sale(models.Model):
     date = models.DateField()
