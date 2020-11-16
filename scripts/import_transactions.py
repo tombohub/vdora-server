@@ -15,15 +15,15 @@ django.setup()
 
 
 with open('transac.csv') as csvfile:
-    from inventory.models import Transaction, Product
+    from inventory.models import Transaction, Product, Location, TransactionType
 
     reader = csv.DictReader(csvfile)
     for row in reader:
         date = row['Date']
         product = Product.objects.get(sku=row['SKU'])
-        type = row['Transaction Type']
+        type = TransactionType.objects.get(type=row['Transaction Type'])
         quantity = row['Quantity']
-        location = row['Location']
+        location = Location.objects.get(location=row['Location'])
         note = row['Note']
 
         transaction = Transaction(

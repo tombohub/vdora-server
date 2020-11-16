@@ -7,18 +7,25 @@ class Product(models.Model):
     color = models.CharField(max_length=20, null=True, blank=True)
     sku = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
+
 
 class Location(models.Model):
     location = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.location
 
 
 class TransactionType(models.Model):
     type = models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.type
+
 
 class Transaction(models.Model):
-    TYPE_CHOICES = [('In', 'In'), ('Out', 'Out'), ('Sale', 'Sale')]
-    LOCATION_CHOICES = [('Nooks', 'Nooks'), ('In-house', 'In-house')]
 
     date = models.DateField()
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
@@ -26,3 +33,6 @@ class Transaction(models.Model):
     quantity = models.IntegerField()
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
     note = models.TextField(null=True)
+
+    def __str__(self) -> str:
+        return self.product
