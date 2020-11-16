@@ -48,9 +48,3 @@ def nooks_payouts(request):
         is_picked=F('nooks_payout_schedule__is_picked'),
         payout_id=F('nooks_payout_schedule__id')).annotate(sum=Sum('price'))
     return Response(payouts)
-
-
-class Koko(viewsets.ViewSet):
-    def list(self, request):
-        sales = Sale.objects.values('product')
-        return Response(sales)

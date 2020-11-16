@@ -15,5 +15,5 @@ class ProductViewSet(viewsets.ModelViewSet):
 @api_view()
 def inventory_stock(request):
     stock = pivot(Transaction, 'product__name',
-                  'location__name', 'quantity')
+                  'location__name', 'quantity', default=0)
     return Response(stock)
