@@ -25,6 +25,8 @@ urlpatterns = [
     path('', include('sales.urls')),
     path('inventory/', include('inventory.urls')),
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+
+    # swagger paths
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/',
          SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
