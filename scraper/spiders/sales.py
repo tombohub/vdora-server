@@ -47,8 +47,8 @@ class SalesSpider(scrapy.Spider):
         orders = response.json().get('data')
 
         # we are gonna scrape sale details only if it is later than
-        # last sale_id in database
-        last_sale_id = Sale.objects.all().aggregate(
+        # nooks last sale_id in database
+        last_sale_id = Sale.objects.filter(channel='Nooks').aggregate(
             Max('sale_id'))['sale_id__max']
 
         for order in orders:

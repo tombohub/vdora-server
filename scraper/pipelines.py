@@ -24,7 +24,7 @@ class SaleDatabasePipeline:
             sale.price = item['price']
             sale.channel = 'Nooks'
 
-            nooks_payout_schedule = NooksPayoutSchedule.objects.filter(
+            nooks_payout_schedule = NooksPayoutSchedule.objects.get(
                 start_date__lte=sale.date, end_date__gte=sale.date)
             sale.nooks_payout_schedule = nooks_payout_schedule
 
