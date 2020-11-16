@@ -37,12 +37,3 @@ class Transaction(models.Model):
 
     def __str__(self) -> str:
         return self.product
-
-
-class Stock(models.Model):
-    product = models.ForeignKey(Product, on_delete=CASCADE)
-    location = models.ForeignKey(Location, on_delete=CASCADE)
-    quantity = models.IntegerField()
-
-    def __str__(self) -> str:
-        return self.product

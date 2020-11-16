@@ -11,4 +11,5 @@ router.register('products', views.ProductViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('reports/stock', views.inventory_stock)
 ]
