@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'inventory',
     'graphene_django',
     'corsheaders',
-    'django_pivot'
+    'django_pivot',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,7 @@ REST_FRAMEWORK = {
     #     # 'rest_framework.authentication.BasicAuthentication',
     #     # 'rest_framework.authentication.SessionAuthentication',
     # ]
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 GRAPHENE = {

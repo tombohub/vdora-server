@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 
 urlpatterns = [
@@ -24,4 +25,9 @@ urlpatterns = [
     path('', include('sales.urls')),
     path('inventory/', include('inventory.urls')),
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/',
+         SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/',
+         SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]

@@ -1,6 +1,6 @@
 from django.db.models import Sum, F
 
-from rest_framework import viewsets, filters, permissions
+from rest_framework import viewsets, filters, permissions, views
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -48,3 +48,9 @@ def nooks_payouts(request):
         is_picked=F('nooks_payout_schedule__is_picked'),
         payout_id=F('nooks_payout_schedule__id')).annotate(sum=Sum('price'))
     return Response(payouts)
+
+
+class Koko(viewsets.ViewSet):
+    def list(self, request):
+        sales = Sale.objects.values('product')
+        return Response(sales)

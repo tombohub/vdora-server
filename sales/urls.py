@@ -5,6 +5,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'sales', views.SaleViewSet)
 router.register('nooks-payout-schedules', views.NooksPayoutViewSet)
+router.register('koko', views.Koko, basename='koko')
 
 
 urlpatterns = [
