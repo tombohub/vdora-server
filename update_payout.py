@@ -1,4 +1,4 @@
-"""Script to update Sale model with payout schedule reference
+"""Script to update Sale model with payout schedule reference foreign key
     """
 
 import os
