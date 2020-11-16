@@ -1,0 +1,89 @@
+Date,Item,SKU,Transaction Type,Quantity,Location,Note
+2020-09-16,Versa Throw,KY050-VTH,In,6,Nooks,Starting 
+2020-09-16,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,In,1,Nooks,Starting
+2020-09-16,Simply Shift Dress S Black,KY050-SBS,In,2,Nooks,Starting 
+2020-09-16,Simply Shift Dress M Black,KY050-SBM,In,1,Nooks,Starting 
+2020-09-16,Simply Shift Dress L Black,KY050-SBL,In,1,Nooks,Starting 
+2020-09-16,Simply Shift Dress S Mallard,KY050-SMS,In,2,Nooks,Starting 
+2020-09-16,Simply Shift Dress M Mallard,KY050-SMM,In,2,Nooks,Starting 
+2020-09-16,Fluid T-Shirt L,KY050-FTL,In,1,Nooks,Starting 
+2020-09-16,Fluid T-Shirt M,KY050-FTM,In,2,Nooks,Starting 
+2020-09-16,Fluid T-Shirt S,KY050-FTS,In,1,Nooks,Starting 
+2020-09-16,Fluid Halter Top L,KY050-FHL,In,1,Nooks,Starting 
+2020-09-16,Fluid Halter Top M,KY050-FHM,In,1,Nooks,Starting 
+2020-09-16,Fluid Halter Top S,KY050-FHS,In,1,Nooks,Starting 
+2020-09-16,Fluid Halter Top XS,KY050-FHX,In,1,Nooks,Starting 
+2020-09-16,Versa Toque + Gray,KY050-VTL,In,3,Nooks,Starting 
+2020-09-16,Versa Toque 0 Gray,KY050-VT0,In,3,Nooks,Starting 
+2020-09-16,Versa Toque - Gray,KY050-VTS,In,3,Nooks,Starting 
+2020-09-16,Versa Tie,KY050-VTi,In,3,Nooks,Starting 
+2020-09-16,Eco Mini Backpack Black,KY050-BMB,In,1,Nooks,Starting 
+2020-09-16,Eco Mini Backpack Green-Black,KY050-GMB,In,3,Nooks,Starting 
+2020-09-16,Single hammock Black-Green,KY050-GHM,In,2,Nooks,Starting 
+2020-09-16,Single hammock Yellow-Gray,"KY050-YHM	",In,2,Nooks,Starting 
+2020-09-16,Double hammock,KY050-DHM,In,1,Nooks,Starting 
+2020-09-16,Algarve Cork Card Holder,KY050-ACC,In,1,Nooks,Starting 
+2020-09-16,Tribo Cork Card Holder,KY050-TCC,In,2,Nooks,Starting 
+2020-09-16,Urban Black Cork Card Holder,KY050-BCC,In,4,Nooks,Starting 
+2020-09-16,Fluid T-Shirt XL,KY050-FTX,In,1,Nooks,Starting 
+2020-09-19,Single hammock Black-Green,KY050-GHM,Sale,-1,Nooks,
+2020-09-22,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-09-22,Versa Toque + Gray,KY050-VTL,Sale,-1,Nooks,
+2020-09-24,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-09-24,Versa Toque + Gray,KY050-VTL,Sale,-1,Nooks,
+2020-09-26,Versa Toque - Gray,KY050-VTS,Sale,-1,Nooks,
+2020-09-29,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,Sale,-1,Nooks,
+2020-10-01,Versa Toque + Gray,KY050-VTL,Sale,-1,Nooks,
+2020-10-06,Simply Shift Dress M Black,KY050-SBM,Out,-1,In-house,
+2020-10-06,Simply Shift Dress M Black,KY050-SBM,In,1,Nooks,
+2020-10-06,Versa Toque 0 Gray,KY050-VT0,Out,-5,In-house,
+2020-10-06,Versa Toque 0 Gray,KY050-VT0,In,5,Nooks,
+2020-10-06,Versa Toque - Gray,KY050-VTS,Out,-1,In-house,
+2020-10-06,Versa Toque - Gray,KY050-VTS,In,1,Nooks,
+2020-10-06,Versa Toque + Gray,KY050-VTL,Out,-2,In-house,
+2020-10-06,Versa Toque + Gray,KY050-VTL,In,2,Nooks,
+2020-10-06,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,Out,-1,In-house,
+2020-10-06,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,In,1,Nooks,
+2020-10-10,Urban Black Cork Card Holder,KY050-BCC,Sale,-1,Nooks,
+2020-10-15,Versa Toque 0 Gray,KY050-VT0,Sale,-1,In-house,
+2020-10-16,Tribo Cork Card Holder,KY050-TCC,Sale,-1,Nooks,
+2020-10-16,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-10-16,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-10-16,Versa Toque + Gray,KY050-VTL,Sale,-1,Nooks,
+2020-10-17,Simply Shift Dress L Black,KY050-SBL,Sale,-1,Nooks,
+2020-10-17,Versa Toque + Gray,KY050-VTL,Sale,-1,Nooks,
+2020-10-20,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-10-22,Versa Toque + Gray,KY050-VTL,Sale,-1,In-house,
+2020-10-24,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-10-24,Double hammock,KY050-DHM,Sale,-1,Nooks,
+2020-10-26,Versa Throw,KY050-VTH,Sale,-1,In-house,
+2020-10-28,Eco Mini Backpack Green-Black,KY050-GMB,Sale,-1,Nooks,
+2020-10-29,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-10-29,Versa Toque 0 Gray,KY050-VT0,Sale,-1,In-house,
+2020-10-01,Versa Toque 0 Gray,KY050-VT0,In,16,In-house,Starting
+2020-10-01,Versa Toque - Gray,KY050-VTS,In,3,In-house,Starting
+2020-10-01,Versa Toque + Gray,KY050-VTL,In,3,In-house,Starting
+2020-10-01,Versa Throw,KY050-VTH,In,16,In-house,Starting
+2020-10-01,Versa Tie,KY050-VTi,In,19,In-house,Starting
+2020-10-01,Single hammock Yellow-Gray,"KY050-YHM	",In,2,In-house,Starting
+2020-10-01,Single hammock Black-Green,KY050-GHM,In,3,In-house,Starting
+2020-10-01,Double hammock,KY050-DHM,In,1,In-house,Starting
+2020-10-01,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,In,2,In-house,Starting
+2020-10-01,Simply Shift Dress S Black,KY050-SBS,In,1,In-house,Starting
+2020-10-01,Simply Shift Dress M Black,KY050-SBM,In,3,In-house,Starting
+2020-10-01,Simply Shift Dress L Black,KY050-SBL,In,4,In-house,Starting
+2020-10-01,Simply Shift Dress S Mallard,KY050-SMS,In,2,In-house,Starting
+2020-10-01,Simply Shift Dress M Mallard,KY050-SMM,In,1,In-house,Starting
+2020-10-01,Simply Shift Dress L Mallard,KY050-SML,In,1,In-house,Starting
+2020-11-05,Versa Toque 0 Gray,KY050-VT0,Out,-4,In-house,
+2020-11-05,Versa Toque 0 Gray,KY050-VT0,In,4,Nooks,
+2020-11-05,Versa Toque - Gray,KY050-VTS,Out,-1,In-house,
+2020-11-05,Versa Toque - Gray,KY050-VTS,In,1,Nooks,
+2020-11-01,Versa Toque 0 Gray,KY050-VT0,Sale,-2,In-house,
+2020-11-07,Versa Toque - Gray,KY050-VTS,Sale,-1,Nooks,
+2020-11-06,Versa Tie,KY050-VTi,Sale,-1,Nooks,
+2020-11-06,Bamboo Basic Fleece Sweatshirt M,KY050-BBM,Sale,-1,Nooks,
+2020-11-06,Versa Toque 0 Gray,KY050-VT0,Sale,-1,Nooks,
+2020-11-12,Versa Toque 0 Gray,KY050-VT0,Sale,-2,Nooks,
+2020-11-14,Fluid Halter Top M,KY050-FHM,Sale,-1,Nooks,
+2020-11-13,Versa Tie,KY050-VTi,Sale,-1,Nooks,
