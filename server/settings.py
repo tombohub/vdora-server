@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'sales',
     'inventory',
     'graphene_django',
-    'corsheaders'
+    'corsheaders',
+    'django_pivot'
 ]
 
 MIDDLEWARE = [

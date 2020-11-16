@@ -13,14 +13,14 @@ class Product(models.Model):
 
 
 class Location(models.Model):
-    location = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.location
 
 
 class TransactionType(models.Model):
-    type = models.CharField(max_length=20)
+    name = models.CharField(max_length=20)
 
     def __str__(self) -> str:
         return self.type
@@ -42,6 +42,7 @@ class Transaction(models.Model):
 class Stock(models.Model):
     product = models.ForeignKey(Product, on_delete=CASCADE)
     location = models.ForeignKey(Location, on_delete=CASCADE)
+    quantity = models.IntegerField()
 
     def __str__(self) -> str:
         return self.product
