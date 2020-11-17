@@ -1,15 +1,21 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
+from rest_framework import mixins
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django_pivot.pivot import pivot
 
-from .serializers import ProductSerializer
-from .models import Product, Transaction
+from .serializers import ProductSerializer, LocationSerializer
+from .models import Location, Product, Transaction
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+
+class LocationViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
 
 
 @api_view()
