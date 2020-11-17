@@ -7,6 +7,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register('products', views.ProductViewSet)
 router.register('locations', views.LocationViewSet)
+router.register('transactions', views.TransactionViewSet)
 
 
 urlpatterns = [
