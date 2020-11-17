@@ -27,9 +27,9 @@ class TransactionType(models.Model):
 
 
 class Transaction(models.Model):
-
     date = models.DateField()
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    product = models.ForeignKey(
+        Product, on_delete=models.PROTECT)
     type = models.ForeignKey(TransactionType, on_delete=models.PROTECT)
     quantity = models.IntegerField()
     location = models.ForeignKey(Location, on_delete=models.PROTECT)

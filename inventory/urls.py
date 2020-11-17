@@ -13,4 +13,5 @@ router.register('transactions', views.TransactionViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('reports/stocks/', views.inventory_stocks),
+    path('product-transfer/', views.ProductTranfer.as_view()),
 ]
