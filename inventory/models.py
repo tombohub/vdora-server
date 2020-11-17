@@ -36,4 +36,4 @@ class Transaction(models.Model):
     note = models.TextField(null=True)
 
     def __str__(self) -> str:
-        return self.product
+        return self.product.name

@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Product, Location, Transaction
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
