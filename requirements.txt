@@ -60,7 +60,6 @@ singledispatch==3.4.0.3
 six==1.15.0
 sqlparse==0.4.1
 toml==0.10.1
-traitlets==5.0.5
 Twisted==20.3.0
 Unidecode==1.1.1
 uritemplate==3.0.1
