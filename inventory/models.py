@@ -33,7 +33,16 @@ class Transaction(models.Model):
     type = models.ForeignKey(TransactionType, on_delete=models.PROTECT)
     quantity = models.IntegerField()
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
-    note = models.TextField(null=True)
+    note = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.product.name
+
+
+class Test(models.Model):
+    koko = models.CharField(max_length=94)
+    momo = models.IntegerField(null=True)
+
+
+class Kaka(models.Model):
+    kaka = models.IntegerField()

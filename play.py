@@ -13,12 +13,17 @@ class Kaka:
     bobo: List[Momo]
 
 
-class User(BaseModel):
-    id: int
-    name = 'John Doe'
-    signup_ts: Optional[datetime] = None
-    friends: List[int] = []
+class Momo:
+    def koko(self, mama):
+        def lili(mama):
+            bibi = 'laka'
+            print(f'ovoe je moja {mama}')
+
+        lili(mama)
+        print(f'mama je sada {bibi}')
 
 
-def koko(mo: User):
-    mo.friends.
+ko = Momo()
+
+bobo = 'kikila'
+ko.koko(bobo)
