@@ -18,10 +18,12 @@ from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from .views import LoginView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', LoginView.as_view()),
     path('', include('sales.urls')),
     path('inventory/', include('inventory.urls')),
     path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),
