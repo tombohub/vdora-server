@@ -1,7 +1,6 @@
 from django.db.models import Sum, F
 
 from rest_framework import viewsets, filters, permissions, views
-from rest_framework.authentication import BasicAuthentication
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
