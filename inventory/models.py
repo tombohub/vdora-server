@@ -36,7 +36,7 @@ class Transaction(models.Model):
     note = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.product.name
+        return (self.date, self.product.name)
 
 
 class Test(models.Model):
