@@ -36,7 +36,7 @@ class Transaction(models.Model):
     note = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return (self.date, self.product.name)
+        return f'{self.date}, {self.product.name}, {self.type.name}'
 
 
 class Test(models.Model):
@@ -46,3 +46,4 @@ class Test(models.Model):
 
 class Kaka(models.Model):
     kaka = models.IntegerField()
+    riri = models.ForeignKey(Test, on_delete=models.CASCADE)

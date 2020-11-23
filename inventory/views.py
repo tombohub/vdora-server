@@ -41,6 +41,11 @@ def inventory_stocks(request):
 
 class ProductTranfer(views.APIView):
     def post(self, request):
+        '''
+        Received Product Tranfer Form data from frontend and create 2 transaction.
+        One negative for product going out of location.
+        One positive for product going inro location
+        '''
 
         # ------------------------------------ out ----------------------------------- #
 

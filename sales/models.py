@@ -9,7 +9,7 @@ class NooksPayoutSchedule(models.Model):
     is_picked = BooleanField()
 
     def __str__(self) -> str:
-        return self.payout_date
+        return str(self.payout_date)
 
 
 class Sale(models.Model):
@@ -23,5 +23,5 @@ class Sale(models.Model):
     nooks_payout_schedule = models.ForeignKey(
         NooksPayoutSchedule, on_delete=models.RESTRICT, blank=True, null=True)
 
-    def __str__(self):
-        return self.product
+    def __str__(self) -> str:
+        return f'{self.date}, {self.product}'
