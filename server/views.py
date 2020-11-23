@@ -5,8 +5,14 @@ from rest_framework.authentication import SessionAuthentication
 
 
 class LoginView(views.APIView):
-    authentication_classes = []
+    authentication_classes = [SessionAuthentication]
     permission_classes = []
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            return Response(status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
     def post(self, request, format=None):
         username = request.data.get('username')
@@ -20,6 +26,3 @@ class LoginView(views.APIView):
             return Response({'message': 'success'}, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'wrong credentials'}, status=status.HTTP_404_NOT_FOUND)
-
-    def get(self, request):
-        return Response('koko')
