@@ -36,7 +36,7 @@ class SaleDatabasePipeline:
             transaction.product = Product.objects.get(sku=item['sku'])
             transaction.type = TransactionType.objects.get(
                 id=1)  # id 1 is Sale
-            transaction.quantity = item['quantity']
+            transaction.quantity = -item['quantity'] # minus because it's sale
             transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
 
             sale.save()
