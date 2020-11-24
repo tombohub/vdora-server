@@ -157,7 +157,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://tombohub.github.io',
     'https://thyholyreads.com',
-    'https://dashboard.proectvdora.com',
+    'https://dashboard.projectvdora.com',
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
