@@ -18,7 +18,7 @@ class SalesSpider(scrapy.Spider):
         dict: Sale Item with details
     """
     name = 'sales'
-    start_urls = ['http://sell.thenooks.ca/index.php?p=login']
+    start_urls = ['https://sell.thenooks.ca/index.php?p=login']
     handle_httpstatus_list = [403]
 
     def parse(self, response):
