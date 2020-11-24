@@ -156,7 +156,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://tombohub.github.io',
     'https://thyholyreads.com',
-    *
+    '*',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
