@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import django_on_heroku
-import dj_database_url
+# import django_on_heroku
+# import dj_database_url
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'gqkbk*11s#nw+j=&yc&e3(_r)$x&x1s5^2j3&64$8vse_46+2o'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,13 +88,13 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(
-#     conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
 
 
 # Password validation
@@ -167,4 +168,4 @@ SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 
 # for Heroku
-django_on_heroku.settings(locals())
+# django_on_heroku.settings(locals())
