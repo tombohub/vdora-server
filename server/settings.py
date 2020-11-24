@@ -27,8 +27,7 @@ SECRET_KEY = 'gqkbk*11s#nw+j=&yc&e3(_r)$x&x1s5^2j3&64$8vse_46+2o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost',
-                 'mikaroko.pythonanywhere.com', 'vdora.herokuapp.com']
+ALLOWED_HOSTS = ['vdora.herokuapp.com']
 
 
 # Application definition
@@ -153,7 +152,7 @@ GRAPHENE = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+
     'https://tombohub.github.io',
 ]
 CORS_ALLOW_CREDENTIALS = True
