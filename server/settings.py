@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-# import django_on_heroku
+import django_on_heroku
 import dj_database_url
 from pathlib import Path
 import os
@@ -168,4 +168,4 @@ SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 
 # for Heroku
-# django_on_heroku.settings(locals())
+django_on_heroku.settings(locals())
