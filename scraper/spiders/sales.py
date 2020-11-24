@@ -1,5 +1,6 @@
 import scrapy
 from decouple import config
+from scrapy.http import headers
 from scraper.items import SaleItem
 from sales.models import Sale
 from django.db.models import Max
@@ -18,6 +19,8 @@ class SalesSpider(scrapy.Spider):
     """
     name = 'sales'
     start_urls = ['http://sell.thenooks.ca/index.php?p=login']
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'}
 
     def parse(self, response):
         """Logins and grabs the session to get the orders data
@@ -29,7 +32,8 @@ class SalesSpider(scrapy.Spider):
         return scrapy.FormRequest.from_response(response,
                                                 formdata=formdata,
                                                 formid='login_form',
-                                                callback=self.after_login
+                                                callback=self.after_login,
+                                                headers=self.headers
                                                 )
 
     def after_login(self, response):

@@ -9,6 +9,10 @@ class LoginView(views.APIView):
     permission_classes = []
 
     def get(self, request):
+        '''
+        used to automatically check if user has logged in and redirect to dashboard
+        '''
+
         if request.user.is_authenticated:
             return Response(status=status.HTTP_200_OK)
         else:
@@ -26,3 +30,8 @@ class LoginView(views.APIView):
             return Response({'message': 'success'}, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'wrong credentials'}, status=status.HTTP_404_NOT_FOUND)
+
+
+class GetSales(views.APIView):
+    def get(self, request):
+        

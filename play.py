@@ -14,16 +14,13 @@ class Kaka:
 
 
 class Momo:
-    def koko(self, mama):
-        def lili(mama):
-            bibi = 'laka'
-            print(f'ovoe je moja {mama}')
 
-        lili(mama)
-        print(f'mama je sada {bibi}')
+    nono = ' nono'
+
+    def koko(self):
+        print(self.nono)
 
 
 ko = Momo()
 
-bobo = 'kikila'
-ko.koko(bobo)
+ko.koko()
