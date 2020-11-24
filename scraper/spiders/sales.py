@@ -19,8 +19,7 @@ class SalesSpider(scrapy.Spider):
     """
     name = 'sales'
     start_urls = ['http://sell.thenooks.ca/index.php?p=login']
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'}
+    handle_httpstatus_list = [403]
 
     def parse(self, response):
         """Logins and grabs the session to get the orders data
@@ -33,7 +32,6 @@ class SalesSpider(scrapy.Spider):
                                                 formdata=formdata,
                                                 formid='login_form',
                                                 callback=self.after_login,
-                                                headers=self.headers
                                                 )
 
     def after_login(self, response):
