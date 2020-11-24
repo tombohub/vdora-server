@@ -34,4 +34,4 @@ class LoginView(views.APIView):
 
 class GetSales(views.APIView):
     def get(self, request):
-        
+        pass
