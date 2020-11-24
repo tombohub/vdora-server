@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import django_on_heroku
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -86,10 +87,13 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
 
 
 # Password validation
@@ -153,3 +157,6 @@ CORS_ALLOWED_ORIGINS = [
     'https://tombohub.github.io',
 ]
 CORS_ALLOW_CREDENTIALS = True
+
+# for Heroku
+django_on_heroku.settings(locals())
