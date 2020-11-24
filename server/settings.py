@@ -150,7 +150,6 @@ GRAPHENE = {
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'tombohub.github.io',
-    'vdora.herokuapp.com',
+    'https://tombohub.github.io',
 ]
 CORS_ALLOW_CREDENTIALS = True
