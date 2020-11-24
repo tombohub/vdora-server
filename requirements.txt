@@ -14,6 +14,7 @@ Django==3.1.2
 django-cors-headers==3.5.0
 django-extensions==3.0.9
 django-pivot==1.8.1
+django-on-heroku
 djangorestframework==3.12.1
 dj-database-url
 drf-spectacular==0.11.1
