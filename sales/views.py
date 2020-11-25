@@ -26,8 +26,7 @@ class NooksPayoutViewSet(viewsets.ModelViewSet):
 
 @api_view()
 def monthly_sales(request):
-    monthly_sales = Sale.objects.values(
-        'date__month').annotate(Sum('price'))
+    monthly_sales = Sale.objects.values(     'date__month').annotate(Sum('price'))
     return Response(monthly_sales)
 
 

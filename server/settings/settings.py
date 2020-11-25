@@ -88,14 +88,18 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+
     }
 }
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
-
+if config('DJANGO_ENVIRONMENT' == 'production'):
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True)
+else:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -164,9 +168,10 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 # cookie setting
-CSRF_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SECURE = True
+if config('DJANGO_ENVIRONMENT' == 'production'):
+    CSRF_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_SECURE = True
 
-# for Heroku
-django_on_heroku.settings(locals())
+    # for Heroku
+    django_on_heroku.settings(locals())
