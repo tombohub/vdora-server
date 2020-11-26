@@ -1,11 +1,12 @@
-from django.db.models import Sum, F
+from django.db.models import Sum, F, Count
 
-from rest_framework import viewsets, filters, permissions, views
-from rest_framework.decorators import api_view
+from rest_framework import viewsets, filters, permissions, views, status
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 
 from .serializers import SaleSerializer, NooksPayoutSerializer
 from .models import Sale, NooksPayoutSchedule
+from inventory.models import Transaction
 
 
 class SaleViewSet(viewsets.ModelViewSet):
@@ -14,6 +15,16 @@ class SaleViewSet(viewsets.ModelViewSet):
     """
     queryset = Sale.objects.all().order_by('-date')
     serializer_class = SaleSerializer
+
+    @action(detail=False)
+    def product_sales(self, request):
+        '''
+        products per items sold report
+        '''
+        product_sales = Transaction.objects.filter(type=1).values(
+            'product__name').annotate(Count('product'))
+
+        return Response(product_sales, status=status.HTTP_200_OK)
 
 
 class NooksPayoutViewSet(viewsets.ModelViewSet):
@@ -24,9 +35,25 @@ class NooksPayoutViewSet(viewsets.ModelViewSet):
     serializer_class = NooksPayoutSerializer
 
 
+class ReportsViewSet(viewsets.ViewSet):
+    '''
+    View set for various sale reports
+    '''
+
+    @action(detail=False)
+    def product_sales(self, request):
+        '''
+        products per items sold report
+        '''
+        product_sales = Transaction.objects.filter(type="Sale").values(
+            'product__name').annotate(Count('product'))
+
+        return Response(product_sales, status=status.HTTP_200_OK)
+
+
 @api_view()
 def monthly_sales(request):
-    monthly_sales = Sale.objects.values(     'date__month').annotate(Sum('price'))
+    monthly_sales = Sale.objects.values('date__month').annotate(Sum('price'))
     return Response(monthly_sales)
 
 

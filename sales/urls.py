@@ -1,3 +1,4 @@
+from sales.views import ReportsViewSet
 from django.urls import include, path
 from rest_framework import routers
 from . import views
@@ -5,6 +6,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'sales', views.SaleViewSet)
 router.register('nooks-payout-schedules', views.NooksPayoutViewSet)
+router.register('reports', views.ReportsViewSet, basename='reports')
 
 
 urlpatterns = [
