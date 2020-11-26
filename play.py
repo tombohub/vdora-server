@@ -24,3 +24,8 @@ class Momo:
 ko = Momo()
 
 ko.koko()
+kkk = []
+
+
+def mmm(kkk: str):
+    kkk.append('k')
