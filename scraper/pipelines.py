@@ -22,7 +22,7 @@ class SaleDatabasePipeline:
             sale.sku = item['sku']
             sale.product = item['product']
             sale.quantity = item['quantity']
-            sale.price = item['price']
+            sale.price = item['price'][1:]  # slice bcause first char is $
             sale.channel = 'Nooks'
 
             # attribute nooks payout period to the sale
@@ -36,7 +36,8 @@ class SaleDatabasePipeline:
             transaction.product = Product.objects.get(sku=item['sku'])
             transaction.type = TransactionType.objects.get(
                 id=1)  # id 1 is Sale
-            transaction.quantity = -item['quantity'] # minus because it's sale
+            # minus because it's sale
+            transaction.quantity = -int(item['quantity'])
             transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
 
             sale.save()
