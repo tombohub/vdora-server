@@ -13,13 +13,14 @@ from inventory.models import Transaction, Product, TransactionType, Location
 class SaleDatabasePipeline:
     def process_item(self, item, spider):
 
+        # SALE
         # extra if check up. shouldn't trigger because we already only scraping since th last sale.
         if Sale.objects.filter(sale_id=item['sale_id'], product__sku=item['sku']).exists():
             print('Sale already exists in database')
             return item
         else:
             sale = Sale()
-            sale.sale_id = item['sale_id']
+            sale.sale_id = item['sale_id']  # nooks sale id
             sale.date = item['date']
             sale.product = Product.objects.get(sku=item['sku'])
             sale.quantity = item['quantity']
@@ -31,6 +32,9 @@ class SaleDatabasePipeline:
                 start_date__lte=sale.date, end_date__gte=sale.date)
             sale.nooks_payout_schedule = nooks_payout_schedule
 
+            sale.save()
+
+            # TRANSACTION
             # record change in inventory because of sale
             transaction = Transaction()
             transaction.date = item['date']
@@ -40,7 +44,8 @@ class SaleDatabasePipeline:
             # minus because it's sale
             transaction.quantity = -int(item['quantity'])
             transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
+            transaction.sale = Sale.objects.get(
+                sale_id=item['sale_id'], product__sku=item['sku'])
 
-            sale.save()
             transaction.save()
             return item

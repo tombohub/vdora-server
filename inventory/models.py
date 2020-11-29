@@ -1,5 +1,5 @@
+
 from django.db import models
-from django.db.models.deletion import CASCADE
 
 
 class Product(models.Model):
@@ -34,6 +34,7 @@ class Transaction(models.Model):
     quantity = models.IntegerField()
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
     note = models.TextField(null=True, blank=True)
+    sale = models.ForeignKey('sales.Sale', on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
         return f'{self.date}, {self.product.name}, {self.type.name}'
