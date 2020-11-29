@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import BooleanField, DateField
+from inventory.models import Product
 
 
 class NooksPayoutSchedule(models.Model):
@@ -15,8 +16,7 @@ class NooksPayoutSchedule(models.Model):
 class Sale(models.Model):
     date = models.DateField()
     sale_id = models.IntegerField()
-    sku = models.CharField(max_length=10)
-    product = models.CharField(max_length=100)
+    product = models.ForeignKey(Product, on_delete=models.RESTRICT, null=True)
     quantity = models.IntegerField()
     price = models.FloatField()
     channel = models.CharField(max_length=100)

@@ -12,15 +12,16 @@ from inventory.models import Transaction, Product, TransactionType, Location
 
 class SaleDatabasePipeline:
     def process_item(self, item, spider):
-        if Sale.objects.filter(sale_id=item['sale_id'], sku=item['sku']).exists():
+
+        # extra if check up. shouldn't trigger because we already only scraping since th last sale.
+        if Sale.objects.filter(sale_id=item['sale_id'], product__sku=item['sku']).exists():
             print('Sale already exists in database')
             return item
         else:
             sale = Sale()
             sale.sale_id = item['sale_id']
             sale.date = item['date']
-            sale.sku = item['sku']
-            sale.product = item['product']
+            sale.product = Product.objects.get(sku=item['sku'])
             sale.quantity = item['quantity']
             sale.price = item['price'][1:]  # slice bcause first char is $
             sale.channel = 'Nooks'
