@@ -12,7 +12,7 @@ from inventory.models import Transaction, Product, TransactionType, Location
 
 class SaleDatabasePipeline:
     def process_item(self, item, spider):
-        if Sale.objects.filter(sale_id=item['sale_id']).exists():
+        if Sale.objects.filter(sale_id=item['sale_id'], sku=item['sku']).exists():
             print('Sale already exists in database')
             return item
         else:
