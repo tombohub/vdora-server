@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from .serializers import SaleSerializer, NooksPayoutSerializer
 from .models import Sale, NooksPayoutSchedule
 from inventory.models import Transaction
+from django_pivot.pivot import pivot
 
 
 class SaleViewSet(viewsets.ModelViewSet):
@@ -53,7 +54,8 @@ class ReportsViewSet(viewsets.ViewSet):
 
 @api_view()
 def monthly_sales(request):
-    monthly_sales = Sale.objects.values('date__month').annotate(Sum('price'))
+    monthly_sales = pivot(Sale, 'date__month', 'channel', 'price', default=0)
+
     return Response(monthly_sales)
 
 
