@@ -17,6 +17,7 @@ DATABASES['default'] = dj_database_url.config(
 
 # cookie setting
 CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 
