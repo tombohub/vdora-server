@@ -1,7 +1,8 @@
 import sys
 from django.core.checks.messages import Error
 from django.db import models
-from rest_framework import viewsets, mixins, views, status
+from rest_framework import viewsets, mixins, views, status, authentication
+from rest_framework import permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django_pivot.pivot import pivot
@@ -47,6 +48,9 @@ def inventory_stocks(request):
 
 
 class ProductTranfer(views.APIView):
+    permission_classes = permissions.IsAuthenticated
+    authentication_classes = authentication.SessionAuthentication
+
     def post(self, request):
         '''
         Received Product Tranfer Form data from frontend and create 2 transaction.
