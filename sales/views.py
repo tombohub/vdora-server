@@ -16,8 +16,6 @@ class SaleViewSet(viewsets.ModelViewSet):
     """
     queryset = Sale.objects.all().order_by('-date')
     serializer_class = SaleSerializer
-    permission_classes = []
-    authentication_classes = []
 
     @action(detail=False)
     def product_sales(self, request):
