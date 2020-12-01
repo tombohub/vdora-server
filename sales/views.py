@@ -17,6 +17,12 @@ class SaleViewSet(viewsets.ModelViewSet):
     queryset = Sale.objects.all().order_by('-date')
     serializer_class = SaleSerializer
 
+    # allow for postmark app to send emails
+    def get_permissions(self):
+        if self.action == 'parse_email':
+            self.permission_classes = permissions.AllowAny
+        return super().get_permissions()
+
     @action(detail=False)
     def product_sales(self, request):
         '''
