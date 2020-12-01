@@ -27,6 +27,10 @@ class SaleViewSet(viewsets.ModelViewSet):
 
         return Response(product_sales, status=status.HTTP_200_OK)
 
+    @action(methods='POST', detail=False)
+    def parse_email(self, request):
+        return Response(request.data, status=status.HTTP_200_OK)
+
 
 class NooksPayoutViewSet(viewsets.ModelViewSet):
     """
