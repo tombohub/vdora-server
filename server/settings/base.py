@@ -148,5 +148,5 @@ CORS_ALLOWED_ORIGINS = [
     'https://dashboard.projectvdora.com',
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
