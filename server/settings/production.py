@@ -22,7 +22,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
 
 CSRF_TRUSTED_ORIGINS = ['dashboard.projectvdora.com']
-CSRF_COOKIE_DOMAIN = 'dashboard.projectvdora.com'
+CSRF_COOKIE_DOMAIN = 'vdora.herokuapp.com'
 
 # for Heroku
 django_on_heroku.settings(locals())
