@@ -144,7 +144,7 @@ GRAPHENE = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://tombohub.github.io',
-    'inbound.postmarkapp.com',
+    'https://inbound.postmarkapp.com',
     'https://dashboard.projectvdora.com',
 ]
 
