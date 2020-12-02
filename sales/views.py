@@ -27,10 +27,6 @@ class SaleViewSet(viewsets.ModelViewSet):
 
         return Response(product_sales, status=status.HTTP_200_OK)
 
-    @action(methods='POST', detail=False)
-    def parse_email(self, request):
-        return Response(request.data, status=status.HTTP_200_OK)
-
 
 class NooksPayoutViewSet(viewsets.ModelViewSet):
     """
@@ -77,3 +73,8 @@ def nooks_payouts(request):
         is_picked=F('nooks_payout_schedule__is_picked'),
         payout_id=F('nooks_payout_schedule__id')).annotate(sum=Sum('price'))
     return Response(payouts)
+
+
+@api_view(['POST'])
+def parse_email(request):
+    return Response({'sko': 'sks'}, status=status.HTTP_200_OK)
