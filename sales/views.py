@@ -1,7 +1,7 @@
 from django.db.models import Sum, F, Count
 
 from rest_framework import viewsets, filters, permissions, views, status
-from rest_framework.decorators import action, api_view
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 
 from .serializers import SaleSerializer, NooksPayoutSerializer
@@ -76,5 +76,6 @@ def nooks_payouts(request):
 
 
 @api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
 def parse_email(request):
-    return Response({'sko': 'sks'}, status=status.HTTP_200_OK)
+    return Response(request.data, status=status.HTTP_200_OK)
