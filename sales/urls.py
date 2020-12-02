@@ -13,6 +13,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('sales/reports/monthly/', views.monthly_sales),
     path('sales/reports/nooks-payouts/', views.nooks_payouts),
-    path('sales/email/parse', views.parse_email),
+    path('sales/email/parse/', views.parse_email),
 
 ]
