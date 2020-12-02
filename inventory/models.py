@@ -34,7 +34,8 @@ class Transaction(models.Model):
     quantity = models.IntegerField()
     location = models.ForeignKey(Location, on_delete=models.PROTECT)
     note = models.TextField(null=True, blank=True)
-    sale = models.ForeignKey('sales.Sale', on_delete=models.CASCADE, null=True)
+    sale = models.ForeignKey(
+        'sales.Sale', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return f'{self.date}, {self.product.name}, {self.type.name}'
