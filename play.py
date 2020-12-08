@@ -1,31 +1,11 @@
-from typing import List
-from dataclasses import dataclass
-from pydantic import BaseModel
+import requests
+import json
+from bs4 import BeautifulSoup
 
+with open('data.json') as file:
+    email_json = json.loads(file.read())
 
-@dataclass
-class Momo:
-    name: str
+email_body_html = email_json['HtmlBody']
+soup = BeautifulSoup(email_body_html, 'html.parser')
 
-
-@dataclass
-class Kaka:
-    bobo: List[Momo]
-
-
-class Momo:
-
-    nono = ' nono'
-
-    def koko(self):
-        print(self.nono)
-
-
-ko = Momo()
-
-ko.koko()
-kkk = []
-
-
-def mmm(kkk: str):
-    kkk.append('k')
+print(soup.prettify())
