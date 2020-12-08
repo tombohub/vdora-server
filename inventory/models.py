@@ -6,8 +6,8 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     size = models.CharField(max_length=5, null=True, blank=True)
     color = models.CharField(max_length=20, null=True, blank=True)
-    sku = models.CharField(max_length=20)
-    sku_oshawa = models.CharField(max_length=20)
+    sku = models.CharField(max_length=20, null=True)
+    sku_oshawa = models.CharField(max_length=20, null=True)
 
     def __str__(self):
         return self.name

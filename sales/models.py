@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.fields import BooleanField, DateField
-from inventory.models import Product
+from inventory.models import Product, Transaction
 
 
 class NooksPayoutSchedule(models.Model):
