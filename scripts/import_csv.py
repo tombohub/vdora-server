@@ -16,6 +16,7 @@ django.setup()
 
 with open('sales.csv') as csvfile:
     from sales.models import Sale
+
     reader = csv.DictReader(csvfile)
     for row in reader:
         date = row['Sale Date']
