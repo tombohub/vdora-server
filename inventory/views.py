@@ -36,7 +36,7 @@ def inventory_stocks(request):
 
     for stock in stocks:
         stock['Total'] = stock['Port Hope'] + \
-            stock['Oshawa'] + stock['In-house']
+            stock['Oshawa Centre'] + stock['In-house']
 
     nooks_total = Transaction.objects.filter(
         location=1).aggregate(models.Sum('quantity'))  # id 1 is Port Hope
