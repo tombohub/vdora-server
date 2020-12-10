@@ -37,6 +37,8 @@ class Transaction(models.Model):
     note = models.TextField(null=True, blank=True)
     sale = models.ForeignKey(
         'sales.Sale', on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return f'{self.date}, {self.product.name}, {self.type.name}, {self.location}'

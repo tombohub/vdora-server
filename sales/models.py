@@ -23,6 +23,8 @@ class Sale(models.Model):
     channel = models.CharField(max_length=100)
     nooks_payout_schedule = models.ForeignKey(
         NooksPayoutSchedule, on_delete=models.RESTRICT, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
         return f'{self.date}, {self.product}, {self.channel}'

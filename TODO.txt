@@ -1,13 +1,11 @@
 fix:
-check quantity and price
-to include hst in shopifiy and etsy
+taxes
 
 tests:
 check if each order is in database
 is price == price_per_unit * quantity
 
 small:
-django models Created at Updated at
 change sale id to order id
 setup scrapy for debugging, optional pipelines
 make browsable api for all views
@@ -18,8 +16,12 @@ include shopifiy in monthly sales
 medium:
 create table with django-table
 
+
+
 big:
 switch to hasura
 redesign database to have product variations
 instead of based on Sale, base on Order with sales as subcategory, or Order consists of transactionsma
 make new samples model and stuff
+auto update shopifiy
+AUTO UPDATE ETSY
