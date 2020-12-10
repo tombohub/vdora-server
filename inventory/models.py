@@ -10,7 +10,7 @@ class Product(models.Model):
     sku_oshawa = models.CharField(max_length=20, null=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}, {self.sku}, {self.sku_oshawa}'
 
 
 class Location(models.Model):
@@ -39,7 +39,7 @@ class Transaction(models.Model):
         'sales.Sale', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
-        return f'{self.date}, {self.product.name}, {self.type.name}'
+        return f'{self.date}, {self.product.name}, {self.type.name}, {self.location}'
 
 
 class Test(models.Model):

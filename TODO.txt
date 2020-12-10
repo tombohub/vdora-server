@@ -1,0 +1,4 @@
+django models Created at Updated at
+scrape fulfillment location from dashboard
+check quantity and price
+change sale id to order id

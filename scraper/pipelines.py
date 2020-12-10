@@ -8,12 +8,14 @@
 from itemadapter import ItemAdapter
 from sales.models import Sale, NooksPayoutSchedule
 from inventory.models import Transaction, Product, TransactionType, Location
+from django.db.models import Q
 
 
 class SaleDatabasePipeline:
     def process_item(self, item, spider):
 
-        # SALE
+        # / SALE >>>>
+
         # extra if check up. shouldn't trigger because we already only scraping since th last sale.
         if Sale.objects.filter(sale_id=item['sale_id'], product__sku=item['sku']).exists():
             print('Sale already exists in database')
@@ -22,9 +24,11 @@ class SaleDatabasePipeline:
             sale = Sale()
             sale.sale_id = item['sale_id']  # nooks sale id
             sale.date = item['date']
-            sale.product = Product.objects.get(sku=item['sku'])
+            sale.product = Product.objects.get(
+                Q(sku=item['sku']) | Q(sku_oshawa=item['sku']))
             sale.quantity = item['quantity']
             sale.price = item['price'][1:]  # slice bcause first char is $
+
             sale.channel = 'Nooks'
 
             # attribute nooks payout period to the sale
@@ -34,15 +38,20 @@ class SaleDatabasePipeline:
 
             sale.save()
 
-            # TRANSACTION
+            # / TRANSACTION >>>>
+
             # record change in inventory because of sale
             transaction = Transaction()
             transaction.date = item['date']
-            transaction.product = Product.objects.get(sku=item['sku'])
+            transaction.product = sale.product
             transaction.type = TransactionType.objects.get(
                 id=1)  # id 1 is Sale
+
             # minus because it's sale
             transaction.quantity = -int(item['quantity'])
+
+            # figuring out location based on sku
+            # TODO: test
             transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
             transaction.sale = Sale.objects.get(
                 sale_id=item['sale_id'], product__sku=item['sku'])
