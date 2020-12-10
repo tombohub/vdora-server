@@ -84,6 +84,6 @@ class SalesSpider(scrapy.Spider):
         for row in rows:
             sale['sku'] = row.css('td:nth-child(3)::text').get()
             sale['quantity'] = row.css('td:nth-child(4)::text').get()
-            sale['price'] = row.css(
+            sale['price_per_unit'] = row.css(
                 'td:nth-child(5) span.price::text').get()
             yield sale

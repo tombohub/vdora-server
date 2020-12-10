@@ -1,10 +1,19 @@
+fix:
+check quantity and price
+to include hst in shopifiy and etsy
+
+
 small:
 django models Created at Updated at
-check quantity and price
 change sale id to order id
 setup scrapy for debugging, optional pipelines
 make browsable api for all views
+possible too much scrapy calling
+make a test check if each order is in database
 
+
+medium:
+create table with django-table
 
 big:
 switch to hasura

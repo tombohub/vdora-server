@@ -18,6 +18,7 @@ class Sale(models.Model):
     sale_id = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.RESTRICT, null=True)
     quantity = models.IntegerField()
+    price_per_unit = models.FloatField()
     price = models.FloatField()
     channel = models.CharField(max_length=100)
     nooks_payout_schedule = models.ForeignKey(

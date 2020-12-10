@@ -26,9 +26,14 @@ class SaleDatabasePipeline:
             sale.date = item['date']
             sale.product = Product.objects.get(
                 Q(sku=item['sku']) | Q(sku_oshawa=item['sku']))
-            sale.quantity = item['quantity']
-            sale.price = item['price'][1:]  # slice bcause first char is $
+            sale.quantity = int(item['quantity'])  # int bc. its string
 
+            # slice bcause first char is $, float bc. its string
+            sale.price_per_unit = float(item['price_per_unit'][1:])
+
+            sale.price = sale.price_per_unit * sale.quantity
+
+            # TODO make real model for channels
             sale.channel = 'Nooks'
 
             # attribute nooks payout period to the sale
