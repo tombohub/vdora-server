@@ -51,7 +51,7 @@ class SaleDatabasePipeline:
             transaction.quantity = -int(item['quantity'])
 
             # figuring out location based on sku
-            # TODO: test
+            #
             transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
             transaction.sale = Sale.objects.get(
                 sale_id=item['sale_id'], product__sku=item['sku'])
