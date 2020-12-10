@@ -13,3 +13,4 @@ class SaleItem(scrapy.Item):
     product = scrapy.Field()
     quantity = scrapy.Field()
     price = scrapy.Field()
+    location = scrapy.Field()

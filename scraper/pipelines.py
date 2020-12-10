@@ -49,12 +49,19 @@ class SaleDatabasePipeline:
 
             # minus because it's sale
             transaction.quantity = -int(item['quantity'])
+            transaction.location = Location.objects.get(
+                name=item['location'])
 
-            # figuring out location based on sku
-            #
-            transaction.location = Location.objects.get(id=1)  # id 1 is Nooks
-            transaction.sale = Sale.objects.get(
-                sale_id=item['sale_id'], product__sku=item['sku'])
+            # because each location has different sku need to check which sku to query
+            # all because one sale id can be multiple items.
+            # TODO: redesign
+
+            if item['location'] == "Oshawa Centre":  # for now only check oshawa
+                transaction.sale = Sale.objects.get(
+                    sale_id=item['sale_id'], product__sku_oshawa=item['sku'])
+            else:
+                transaction.sale = Sale.objects.get(
+                    sale_id=item['sale_id'], product__sku=item['sku'])
 
             transaction.save()
             return item

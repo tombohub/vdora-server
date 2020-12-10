@@ -24,4 +24,4 @@ class Sale(models.Model):
         NooksPayoutSchedule, on_delete=models.RESTRICT, blank=True, null=True)
 
     def __str__(self) -> str:
-        return f'{self.date}, {self.product}'
+        return f'{self.date}, {self.product}, {self.channel}'

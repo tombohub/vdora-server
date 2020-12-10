@@ -44,7 +44,9 @@ class SalesSpider(scrapy.Spider):
         yield scrapy.Request(url=url, callback=self.parse_orders)
 
     def parse_orders(self, response):
-        '''getting orders data available from orders listing page'''
+        '''getting orders data available from orders listing page
+            From the giant api url, response is json
+        '''
 
         orders = response.json().get('data')
 
@@ -68,9 +70,18 @@ class SalesSpider(scrapy.Spider):
         """ Parsing sale details after getting order id"""
 
         sale = response.meta['item']
+
+        # get the location, fullfilment centre, on which the product is sold
+        # which is in the table at the bottom "Fulfillment details"
+        tables = response.css('table')
+        fulfillment_details_table = tables[5]
+        sale['location'] = fulfillment_details_table.css(
+            'tbody tr td:nth-child(4)::text').get()
+
+        # get the other sale info which is in another table, at the top "Product details"
         rows = response.css('div.mp-table table tbody tr')
+
         for row in rows:
-            sale['product'] = row.css('td:nth-child(2) a::text').get()
             sale['sku'] = row.css('td:nth-child(3)::text').get()
             sale['quantity'] = row.css('td:nth-child(4)::text').get()
             sale['price'] = row.css(
