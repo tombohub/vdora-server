@@ -2,6 +2,9 @@ fix:
 check quantity and price
 to include hst in shopifiy and etsy
 
+tests:
+check if each order is in database
+is price == price_per_unit * quantity
 
 small:
 django models Created at Updated at
@@ -9,7 +12,7 @@ change sale id to order id
 setup scrapy for debugging, optional pipelines
 make browsable api for all views
 possible too much scrapy calling
-make a test check if each order is in database
+include shopifiy in monthly sales
 
 
 medium:
