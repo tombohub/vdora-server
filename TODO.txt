@@ -5,6 +5,9 @@ change sale id to order id
 setup scrapy for debugging, optional pipelines
 make browsable api for all views
 
+
 big:
+switch to hasura
 redesign database to have product variations
-instead of based on Sale, base on Order with sales as subcategory, or Order consists of transactions
+instead of based on Sale, base on Order with sales as subcategory, or Order consists of transactionsma
+make new samples model and stuff
