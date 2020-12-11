@@ -2,7 +2,7 @@
     "python.linting.flake8Enabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "/home/tomo/anaconda3/envs/vdora/bin/python",
+    "python.pythonPath": "/home/tomo/.local/share/virtualenvs/server-0DycQBzL/bin/python",
     "workbench.colorCustomizations": {
         "statusBar.background": "#193306",
         "statusBar.foreground": "#e7e7e7",
