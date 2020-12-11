@@ -21,6 +21,7 @@ create table with django-table
 big:
 switch to hasura
 redesign database to have product variations
+redesign to have channels
 instead of based on Sale, base on Order with sales as subcategory, or Order consists of transactionsma
 make new samples model and stuff
 auto update shopifiy
