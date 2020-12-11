@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "==3.1.2"
+beautifulsoup4 = "==4.9.3"
+dj-database-url = "==0.5.0"
+django-cors-headers = "==3.5.0"
+django-extensions = "==3.0.9"
+django-on-heroku = "==1.1.2"
+django-pivot = "==1.8.1"
+djangorestframework = "==3.12.1"
+scrapy = "==2.4.0"
+djoser = "==2.1.0"
+graphene-django = "==2.13.0"
+python-decouple = "==3.3"
+pydantic = "==1.6.1"
+drf-spectacular = "==0.11.1"
+
+[dev-packages]
+gunicorn = "==20.0.4"
+ipython = "==7.19.0"
+
+[requires]
+python_version = "3.8"
